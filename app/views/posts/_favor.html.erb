@@ -1,0 +1,11 @@
+<% if current_user %>
+  <% if post.find_favor(current_user) %>
+    <%= link_to unfavor_post_path(post), method: :post, class: 'btn btn-info btn-xs', remote: true do %>
+      <i class="fa fa-heart"></i>
+    <% end %>
+  <% else %>
+    <%= link_to favor_post_path(post), method: :post, class: 'btn btn-info btn-xs', remote: true do %>
+      <i class="fa fa-heart-o"></i>
+    <% end %>
+  <% end %>
+<% end %>

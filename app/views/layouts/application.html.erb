@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AjaxPostingApp01</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container">
+      <ul class="nav nav-pills">
+        <li role="presentation">
+          <%= link_to 'jQuery 练习一', jquery_1_path %>
+        </li>
+        <li role="presentation">
+          <%= link_to 'jQuery 练习二', jquery_2_path %>
+        </li>
+        <li role="presentation">
+          <%= link_to 'jQuery 练习三', jquery_3_path %>
+        </li>
+        <li role="presentation">
+          <%= link_to 'jQuery 练习四', jquery_4_path %>
+        </li>
+        <li role="presentation">
+          <%= link_to 'jQuery 练习五', jquery_5_path %>
+        </li>
+        <% if  current_user %>
+          <li role="presentation">
+            <%= link_to '登出', destroy_user_session_path, method: :delete %>
+          </li>
+          <li role="presentation">
+            <%= link_to '修改密码', edit_registration_path(:user) %>
+          </li>
+        <% else %>
+          <li role="presentation">
+            <%= link_to '注册', new_registration_path(:user) %>
+          </li>
+          <li role="presentation">
+            <%= link_to '登录', new_session_path(:user) %>
+          </li>
+        <% end %>
+      </ul>
+      <% if flash[:notice] %>
+        <%= flash[:notice] %>
+      <% end %>
+      <% if flash[:alert] %>
+        <%= flash[:alert] %>
+      <% end %>
+      <%= yield %>
+    </div>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>
